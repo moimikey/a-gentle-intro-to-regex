@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>reveal.js - The HTML Presentation Framework</title>
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Printing and PDF exports -->
+    <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style>
+      img {
+        box-shadow: none !important;
+        border: 0 !important;
+        background: none !important
+      }
+
+      .slide2 .hljs span.hljs-regexp { color: #FFF }
+      .slide2 .hljs span.hljs-comment { color: #7F9F7F }
+      .slide2 .hljs,
+      .slide2 .hljs span { color: #333 }
+
+
+      .slide3 .hljs span.hljs-regexp { color: #333 }
+      .slide3 .hljs,
+      .slide3 .hljs span { color: #FFF }
+      .slide3 .hljs span.hljs-string { color: #FF4639 }
+/*
+      .slide3 .hljs span.hljs-something { color: red !important }
+      .slide3 .hljs,
+      .slide3 .hljs span { color: #666 }
+*//*
+      .slide3 .hljs span.hljs-something { color: red !important }
+      .slide3 .hljs,
+      .slide3 .hljs span { color: #666 }
+*//*
+      .slide3 .hljs span.hljs-something { color: red !important }
+      .slide3 .hljs,
+      .slide3 .hljs span { color: #666 }
+*/
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section data-state="about" data-background="#FFF">
+          <h2>Regex Party 2k15</h2>
+          <p class="fragment">My name is <span class="fragment roll-in">Michael</span></p>
+          <p class="fragment">I'm <span class="fragment roll-in">moimikey</span> on <span class="fragment roll-in">GitHub</span>/<span class="fragment roll-in">NPM</span>/<span class="fragment roll-in">Twitter</span></p>
+          <p class="fragment">I'm a <span class="fragment roll-in">Regular Expression</span> <span class="fragment grow">enthusiast</span></p>
+
+          <aside class="notes">
+            <p>I'd like to start by saying Hello, my name is Michael. My handle
+               is `moimikey`. I use that on about everything. Most regularly,
+               GitHub, NPM and Twitter.
+            </p>
+            <p>
+               I like to say that I'm an enthusiast of Regular Expression. I would
+               not necessarily call myself an expert, although I've been using
+               it for over a decade now, there are parts of it that I've failed
+               to memorize, but I've got my notes so we'll be fine. This is of
+               course not to deter you from learning. I'm just very lazy.
+            </p>
+          </aside>
+        </section>
+
+        <section data-state"" data-background="#FFF">
+          <h2>Thanks!</h2>
+          <img src="images/sumi.jpg">
+          <aside class="notes">
+            <p>
+              Big thanks to SUM Innovation for letting us occupy the space for
+              this talk.
+            </p>
+          </aside>
+        </section>
+
+        <section data-state="regular-expression" data-background="images/regex.jpg">
+          <img src="images/regularexpression.png">
+          <aside class="notes">
+            <p>please raise your hand if you know what regular expression is conceptionally?</p>
+            <p>keep your hand up if you use regular expression, regularly?</p>
+          </aside>
+        </section>
+
+        <section data-state="">
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+  var url = ""; // I AM STRING!
+  url.match(/.+:\/\/.+\/.+v?=(\w+)/).pop() // riiiiiiiiight...
+  >
+          </code></pre>
+          <aside class="notes">
+            <p>
+              now keep your hand up if you can tell me what this would loosely attempt to match?
+              it's not the most obvious. those with trained eyes may see it.
+            </p>
+          </aside>
+        </section>
+
+        <section data-state="">
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+  var url = "https://youtube.com/watch?v=dQw4w9WgXcQ";
+  url.match(/.+:\/\/.+\/.+v?=(\w+)/).pop()
+  > "dQw4w9WgXcQ" // O RLY?
+          </code></pre>
+          <aside class="notes">
+            <p>How about now?</p>
+            <p>
+              what you're seeing is not completely regular expression, but a little bit of JavaScript
+              that is trying to `match` a pattern in a string (url). The `pop` at the end assumes that the
+              `match` function is going to return an array which we'll understand a little bit later. the
+              `pop` method comes for free with arrays, so lets just return the last item on the array.
+            </p>
+            <p>this last item, happens to be the YouTube ID.</p>
+          </aside>
+        </section>
+
+        <section data-state="">
+          <h3>Why?</h3>
+          <pre><code class="js">
+  var url = "https://youtube.com/watch?v=dQw4w9WgXcQ";
+  url.match(/.+:\/\/.+\/.+v?=(\w+)/).pop()
+  > "dQw4w9WgXcQ" // YA RLY.
+          </code></pre>
+          <aside class="notes">
+            <p>But why?</p>
+            <p>Lets first focus on the best part.</p>
+          </aside>
+        </section>
+
+        <section data-state="slide2">
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+  var url = "https://youtube.com/watch?v=dQw4w9WgXcQ";
+  url.match(/.+:\/\/.+\/.+v?=(\w+)/).pop() // THE BEST!
+  >
+          </code></pre>
+
+          <aside class="notes">
+
+          </aside>
+        </section>
+
+        <section>
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+            /.+:\/\/.+\/.+v?=(\w+)/
+          </code></pre>
+          <aside class="notes">
+            Now what if we took this Regular Expression and split it up into smaller easier
+            to read chunks...
+          </aside>
+        </section>
+
+        <section>
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+  /     ≈ 
+  .+   ≈ 
+  :\/\/ ≈ 
+  .+    ≈
+  \/    ≈ 
+  .+v?= ≈ 
+  (\w+) ≈ 
+  /     ≈ 
+          </code></pre>
+          <aside class="notes">
+          </aside>
+        </section>
+
+        <section>
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+  /     ≈ Like "" for String, [] for Array, // is for RegExp
+  .+   ≈ 
+  :\/\/ ≈ 
+  .+    ≈
+  \/    ≈ 
+  .+v?= ≈ 
+  (\w+) ≈ 
+  /     ≈ 
+          </code></pre>
+          <aside class="notes">
+          </aside>
+        </section>
+
+        <section>
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+  /     ≈ Like "" for String, [] for Array, // is for RegExp    
+  .+   ≈ 1 or more characters
+  :\/\/ ≈ 
+  .+    ≈
+  \/    ≈ 
+  .+v?= ≈ 
+  (\w+) ≈ 
+  /     ≈ 
+          </code></pre>
+          <aside class="notes">
+          </aside>
+        </section>   
+
+        <section>
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+  /     ≈ Like "" for String, [] for Array, // is for RegExp    
+  .+   ≈ 1 or more characters
+  :\/\/ ≈ 1 colon &amp; 2 forward slashes
+  .+    ≈
+  \/    ≈ 
+  .+v?= ≈ 
+  (\w+) ≈ 
+  /     ≈ 
+          </code></pre>
+          <aside class="notes">
+          </aside>
+        </section>        
+
+        <section>
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+  /     ≈ Like "" for String, [] for Array, // is for RegExp  
+  .+   ≈ 1 or more characters
+  :\/\/ ≈ 1 colon &amp; 2 forward slashes
+  .+    ≈ 1 or more characters
+  \/    ≈ 
+  .+v?= ≈ 
+  (\w+) ≈ 
+  /     ≈ 
+          </code></pre>
+          <aside class="notes">
+          </aside>
+        </section>
+
+        <section>
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+  /     ≈ Like "" for String, [] for Array, // is for RegExp  
+  .+   ≈ 1 or more characters
+  :\/\/ ≈ 1 colon &amp; 2 forward slashes
+  .+    ≈ 1 or more characters
+  \/    ≈ 1 forward slash
+  .+v?= ≈ 
+  (\w+) ≈ 
+  /     ≈ 
+          </code></pre>
+          <aside class="notes">
+          </aside>
+        </section>
+
+        <section>
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+  /     ≈ Like "" for String, [] for Array, // is for RegExp  
+  .+   ≈ 1 or more characters
+  :\/\/ ≈ 1 colon &amp; 2 forward slashes
+  .+    ≈ 1 or more characters
+  \/    ≈ 1 forward slash
+  .+v?= ≈ 1 or more chars, opt. with a leading `v` &amp; "=" char
+  (\w+) ≈ 
+  /     ≈ 
+          </code></pre>
+          <aside class="notes">
+          </aside>
+        </section>
+
+        <section>
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+  /     ≈ Like "" for String, [] for Array, // is for RegExp  
+  .+   ≈ 1 or more characters
+  :\/\/ ≈ 1 colon &amp; 2 forward slashes
+  .+    ≈ 1 or more characters
+  \/    ≈ 1 forward slash
+  .+v?= ≈ 1 or more chars, opt. with a leading `v` &amp; "=" char
+  (\w+) ≈ Group capture 1 or more alphanumeric characters
+  /     ≈ 
+          </code></pre>
+          <aside class="notes">
+          </aside>
+        </section>
+
+        <section>
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+  /     ≈ Like "" for String, [] for Array, // is for RegExp  
+  .+   ≈ 1 or more characters
+  :\/\/ ≈ 1 colon &amp; 2 forward slashes
+  .+    ≈ 1 or more characters
+  \/    ≈ 1 forward slash
+  .+v?= ≈ 1 or more chars, opt. with a leading `v` &amp; "=" char
+  (\w+) ≈ Group capture 1 or more alphanumeric characters
+  /     ≈ Close our regular expression
+
+
+          </code></pre>
+          <aside class="notes">
+          </aside>
+        </section>
+
+        <section>
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+  /     ≈ 
+  .+   ≈ https       // match as many single characters as possible
+  :\/\/ ≈ ://         // but stop at a colon, forward slash, slash
+  .+    ≈ youtube.com // match as many single chars as possible
+  \/    ≈ /           // but stop as a forward slash.
+  .+v?= ≈ watch?v=    // match as many single chars; stop before `=`
+  (\w+) ≈ dQw4w9WgXcQ // match a word, digits, or whitespace
+  /     ≈ 
+
+  https://youtube.com/watch?v=dQw4w9WgXcQ
+          </code></pre>
+          <aside class="notes">
+            <p>
+              If we put these into context however...
+            </p>
+
+            <p>
+              <ul>
+                <li>
+                  this could potentially match ANY part of the string (imagining that it was a
+                  paragraph containing a URL, or multiple instances of this URL. within the string,
+                  we capture `https` because it's the FIRST thing we're trying to match; this
+                  first matcher wants ANY number of characters, but we've indirectly told it to
+                  half at a colon slash slash, because URLs have colon slash slash. Technically,
+                  this could match `http` or `https`, or even `ftp`. we're loosely matching that
+                  we have any number of characters except new lines all the way up until our next
+                  matcher pointer hits the colon. Now, a more efficient and complex regular expression
+                  would go the distance with this, and try to match it match ONLY http, or ONLY https,
+                  for this, we don't care about the protocol, but we're assuming that if something has
+                  a bit of text with a leading colon slash slash? it's probably a URL.
+                </li>
+                <li>
+                  what comes after the slash in the URL will come the actual domain. similar to us
+                  matching any characters with https, we can then assume that anything after a
+                  prototocol, a colon slash slash, would most likely be a domain.
+                </li>
+                <li>
+                  Since domains do not have slashes in them, then we can also assume that this URL
+                  will have a protocol, a colon slash slash, a domain, and is delimited by a forward
+                  slash, which indicates that we're at the root of that domain, or perhaps instead
+                  of just a slash, slash index.html. in this case, for a YouTube URL, it's simply
+                  just a slash.
+                </li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </p>
+
+          </aside>
+        </section>
+
+        <section>
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+  /     ≈ 
+  .+   ≈ https
+  :\/\/ ≈ ://
+  .+    ≈ youtube.com
+  \/    ≈ /
+  .+v?= ≈ watch?v=
+  (\w+) ≈ dQw4w9WgXcQ // PARENTHESIS INDICATES A CAPTURE GROUP!
+  /     ≈ 
+          </code></pre>
+          <aside class="notes">
+            <p>
+              We'll get into the immediate characters that we're dealing with here,
+              but first...
+            </p>
+            <p>
+              
+              to match an string, or part of a string. Since we're using this
+              particular YouTube URL, our Regular Expression is ensuring that
+              it will match at particular string, based 
+              type of URL, the only thing that is subject to change is the
+              ID number, which explains why we're wanting to capture it. We
+              can utilize other Regular Expression patterns though to ensure
+              that what we're matching is indeed that particular kind of YouTube
+              URL. We're trying presumptuously matching.
+            </p>
+
+            <p>
+              You'll start to notice that Regular Expression is genuinely
+              meant to match whatever string its given. In this case, when
+              we try to match things that aren't exact, we supplement them
+              with special characters.
+            </p>
+          </aside>
+        </section>
+
+<!-- outside regex, talk about the JS -->
+
+        <section data-state="slide3">
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+  var url = "https://youtube.com/watch?v=dQw4w9WgXcQ";
+  url.match(/.+:\/\/.+\/.+v?=(\w+)/).pop()
+  >
+          </code></pre>
+          <aside class="notes">
+            at first glance, it's hard to see any disambiguation. if we look at a little closer, we can find some
+            things that stand out:
+          </aside>
+        </section>
+
+        <section data-state="slide6">
+          <h3>&nbsp;</h3>
+          <pre><code class="js">
+
+          </code></pre>        
+          <aside class="notes"></aside>
+        </section>
+
+        <section data-state="slide7">
+          <h3>Regular Expression</h3>
+          <!-- <p><span class="fragment">"" a</span> <span class="fragment highlight-red">fragmented</span> <span class="fragment">slide.</span></p> -->
+          <pre><code class="js">
+  var url = "";
+  url.match(/.+:\/\/.+\/.+v?=(\w+)/).pop()
+          </code></pre>
+
+          <aside class="notes">
+
+          </aside>
+        </section>
+
+        <section data-state="intro" data-background="#FFF">
+          <img src="images/regular_expressions.png">
+          <audio src="sound/regex.wav" class="regex"></audio>
+          <audio src="sound/tarzan.mp3" class="tarzan"></audio>
+
+          <aside class="notes">
+            <p>Raise your hand if you're unfamiliar with what Perl is?</p>
+            <p>Perl is a really old programming language that had noteriety for
+               being really good at string parsing and had a really powerful
+               Regular Expression engine.
+            </p>
+          </aside>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <section>
+          <h1>Reveal.js</h1>
+          <h3>The HTML Presentation Framework</h3>
+          <p>
+            <small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+          </p>
+        </section>
+        <section>
+          <h2>Hello There</h2>
+          <p>
+            reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
+          </p>
+        </section>
+        <!-- Example of nested vertical slides -->
+        <section>
+          <section>
+            <h2>Vertical Slides</h2>
+            <p>Slides can be nested inside of each other.</p>
+            <p>Use the <em>Space</em> key to navigate through all slides.</p>
+            <br>
+            <a href="#" class="navigate-down">
+              <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+            </a>
+          </section>
+          <section>
+            <h2>Basement Level 1</h2>
+            <p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
+          </section>
+          <section>
+            <h2>Basement Level 2</h2>
+            <p>That's it, time to go back up.</p>
+            <br>
+            <a href="#/2">
+              <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
+            </a>
+          </section>
+        </section>
+        <section>
+          <h2>Slides</h2>
+          <p>
+            Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
+          </p>
+        </section>
+        <section>
+          <h2>Point of View</h2>
+          <p>
+            Press <strong>ESC</strong> to enter the slide overview.
+          </p>
+          <p>
+            Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
+          </p>
+        </section>
+        <section>
+          <h2>Touch Optimized</h2>
+          <p>
+            Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
+          </p>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+          ## Markdown support
+          Write content using inline or external Markdown.
+          Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+          ```
+          <section data-markdown>
+            ## Markdown support
+            Write content using inline or external Markdown.
+            Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+          </section>
+          ```
+          </script>
+        </section>
+        <section>
+          <section id="fragments">
+            <h2>Fragments</h2>
+            <p>Hit the next arrow...</p>
+            <p class="fragment">... to step through ...</p>
+            <p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+            <aside class="notes">
+              This slide has fragments which are also stepped through in the notes window.
+            </aside>
+          </section>
+          <section>
+            <h2>Fragment Styles</h2>
+            <p>There's different types of fragments, like:</p>
+            <p class="fragment grow">grow</p>
+            <p class="fragment shrink">shrink</p>
+            <p class="fragment roll-in">roll-in</p>
+            <p class="fragment fade-out">fade-out</p>
+            <p class="fragment current-visible">current-visible</p>
+            <p class="fragment highlight-red">highlight-red</p>
+            <p class="fragment highlight-blue">highlight-blue</p>
+          </section>
+        </section>
+        <section id="transitions">
+          <h2>Transition Styles</h2>
+          <p>
+            You can select from different transitions, like: <br>
+            <a href="?transition=none#/transitions">None</a> -
+            <a href="?transition=fade#/transitions">Fade</a> -
+            <a href="?transition=slide#/transitions">Slide</a> -
+            <a href="?transition=convex#/transitions">Convex</a> -
+            <a href="?transition=concave#/transitions">Concave</a> -
+            <a href="?transition=zoom#/transitions">Zoom</a>
+          </p>
+        </section>
+        <section id="themes">
+          <h2>Themes</h2>
+          <p>
+            reveal.js comes with a few themes built in: <br>
+            <!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
+            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
+            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
+            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
+            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
+            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
+            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
+            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
+            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
+            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+          </p>
+        </section>
+        <section>
+          <section data-background="#dddddd">
+            <h2>Slide Backgrounds</h2>
+            <p>
+              Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
+            </p>
+            <a href="#" class="navigate-down">
+              <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+            </a>
+          </section>
+          <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
+            <h2>Image Backgrounds</h2>
+          <pre><code>&lt;section data-background="image.png"&gt;</code></pre>
+        </section>
+        <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
+          <h2>Tiled Backgrounds</h2>
+        <pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
+      </section>
+      <section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
+        <div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
+          <h2>Video Backgrounds</h2>
+        <pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
+      </div>
+    </section>
+  </section>
+  <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+    <h2>Background Transitions</h2>
+    <p>
+      Different background transitions are available via the backgroundTransition option. This one's called "zoom".
+    </p>
+  <pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
+</section>
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+  <h2>Background Transitions</h2>
+  <p>
+    You can override background transitions per-slide.
+  </p>
+<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
+</section>
+<section>
+<h2>Pretty Code</h2>
+<pre><code data-trim contenteditable>
+    function linkify( selector ) {
+      if( supports3DTransforms ) {
+        var nodes = document.querySelectorAll( selector );
+        for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+          var node = nodes[i];
+          if( !node.className ) {
+            node.className += ' roll';
+          }
+        }
+      }
+    }
+</code></pre>
+<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+</section>
+<section>
+<h2>Marvelous List</h2>
+<ul>
+  <li>No order here</li>
+  <li>Or here</li>
+  <li>Or here</li>
+  <li>Or here</li>
+</ul>
+</section>
+<section>
+<h2>Fantastic Ordered List</h2>
+<ol>
+  <li>One is smaller than...</li>
+  <li>Two is smaller than...</li>
+  <li>Three!</li>
+</ol>
+</section>
+<section>
+<h2>Tabular Tables</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Value</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Apples</td>
+      <td>$1</td>
+      <td>7</td>
+      <tr>
+        <tr>
+          <td>Lemonade</td>
+          <td>$2</td>
+          <td>18</td>
+          <tr>
+            <tr>
+              <td>Bread</td>
+              <td>$3</td>
+              <td>2</td>
+              <tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h2>Clever Quotes</h2>
+            <p>
+              These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+              &ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
+            </p>
+            <blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+              &ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
+              reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
+            </blockquote>
+          </section>
+          <section>
+            <h2>Intergalactic Interconnections</h2>
+            <p>
+              You can link between slides internally,
+              <a href="#/2/3">like this</a>.
+            </p>
+          </section>
+          <section>
+            <h2>Speaker View</h2>
+            <p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
+            <p>Press the <em>S</em> key to try it out.</p>
+            <aside class="notes">
+              Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+            </aside>
+          </section>
+          <section>
+            <h2>Export to PDF</h2>
+            <p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
+            <iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+          </section>
+          <section>
+            <h2>Global State</h2>
+            <p>
+              Set <code>data-state="something"</code> on a slide and <code>"something"</code>
+              will be added as a class to the document element when the slide is open. This lets you
+              apply broader style changes, like switching the page background.
+            </p>
+          </section>
+          <section data-state="customevent">
+            <h2>State Events</h2>
+            <p>
+              Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+            </p>
+                        <pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+                            Reveal.addEventListener( 'customevent', function() {
+                            console.log( '"customevent" has fired' );
+                            } );
+            </code></pre>
+          </section>
+          <section>
+            <h2>Take a Moment</h2>
+            <p>
+              Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
+            </p>
+          </section>
+          <section>
+            <h2>Much more</h2>
+            <ul>
+              <li>Right-to-left support</li>
+              <li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
+              <li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
+              <li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
+              <li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
+            </ul>
+          </section>
+          <section style="text-align: left;">
+            <h1>THE END</h1>
+            <p>
+              - <a href="http://slides.com">Try the online editor</a> <br>
+              - <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
+            </p>
+          </section>
+        </div>
+      </div>
+      <script src="lib/js/head.min.js"></script>
+      <script src="js/reveal.js"></script>
+      <script>
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      transition: 'fade', // none/fade/slide/convex/concave/zoom
+      // Optional reveal.js plugins
+      dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true },
+      { src: 'plugin/notes/notes.js', async: true }
+      ]
+      });
+      Reveal.addEventListener('intro', function(evt) {
+        var el = evt.target;
+        var timer = setTimeout(function() {
+          var tarzan = setTimeout(function() {
+            el.getElementsByClassName('tarzan')[0].play();
+            clearTimeout(tarzan);
+          }, 18000);
+          el.getElementsByClassName('regex')[0].play();
+          clearTimeout(timer);
+        }, 10000);
+        
+        
+      });
+      </script>
+    </body>
+  </html>
+
+
+<!--
+awesome devtools, regex section http://goo.gl/zwrJ9h
+my github:   
+
+-->
