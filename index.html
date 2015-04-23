@@ -91,8 +91,14 @@
           </aside>
         </section>
 
-        <section data-state="regular-expression" data-background="images/regex.jpg">
-          <img src="images/regularexpression.png">
+        <section data-state="regular-expression">
+          <h3>Regular Expression</h3>
+          <ul>
+            <li class="fragment">Validate</li>
+            <li class="fragment">Route Matching</li>
+            <li class="fragment">Search &amp; Replace (substitution)</li>
+            <li class="fragment">Parse</li>
+          </ul>
           <aside class="notes">
             <p>please raise your hand if you know what regular expression is conceptionally?</p>
             <p>keep your hand up if you use regular expression, regularly?</p>
@@ -503,17 +509,98 @@
           </code></pre>
         </section>
 
+        <section>
+          <h2>The Ugly</h2>
+          <pre><code class="js">
+  /(?:youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|youtu\.be\/)([a-zA-Z0-9_-]{6,11})/g;
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>When Not To Match</h2>
+          <pre><code class="js">
+  // a nice loose match for an email address, not too crazy...
+
+  ^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$.
+
+  // try again then give up? this might be a little too arbitrary
+
+  ^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|
+  biz|info|mobi|name|aero|asia|jobs|museum)$
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>When Not To Match</h2>
+          <pre><code class="js">
+  // really? i mean...
+
+  (?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*
+  |  "(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]
+      |  \\[\x01-\x09\x0b\x0c\x0e-\x7f])*")
+@ (?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?
+  |  \[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}
+       (?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:
+          (?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]
+          |  \\[\x01-\x09\x0b\x0c\x0e-\x7f])+)
+     \])
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Matching HTML is OK, parsing? Not so much...</h2>
+          <pre><code class="js">
+  // great if you want to create a web scraping tool
+
+  <table.+><thead><tr><td>(.+)&lt;\/td>&lt;\/tr>&lt;\/thead>\s*&lt;tbody>&lt;tr>&lt;td>(\S.*)&lt;\/td>&lt;\/tr>&lt;\/tbody>&lt;\/table>
+
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Afterword</h2>
+          <ul>
+            <li class="fragment">match only what's necessary</li>
+            <li class="fragment">don't bother trying to parse HTML</li>
+            <li class="fragment">your expression should be good at doing a single task</li>
+            <li class="fragment">understand the differences between </li>
+          </ul>
+
+          <aside class="notes">
+          <p>
+            There are many other topics that can be covered with Regular Expression. This is just a small
+            gist of what you can potentially do with Regular Expression, and the combinations of patterns
+            are limitless.
+          </p>
+          <p>
+            I want to stress that I don't believe there is a wrong way to write a Regular Expression, but
+            there are ways to match more efficiently.
+          </p>
+          <p>
+            Another last takeaway, 
+          </p>
+          <p>Raise your hand if you're unfamiliar with what Perl is?</p>
+          <p>Perl is a really old programming language that had noteriety for
+             being really good at string parsing and had a really powerful
+             Regular Expression engine.
+          </p>
+          </aside>
+        </section>
+
         <section data-state="intro" data-background="#FFF">
           <img src="images/regular_expressions.png">
           <audio src="sound/regex.wav" class="regex"></audio>
           <audio src="sound/tarzan.mp3" class="tarzan"></audio>
           <aside class="notes">
-            <p>Raise your hand if you're unfamiliar with what Perl is?</p>
-            <p>Perl is a really old programming language that had noteriety for
-               being really good at string parsing and had a really powerful
-               Regular Expression engine.
-            </p>
           </aside>
+        </section>
+
+        <section>
+          <h2>Ask Me Anything!</h2>
+        </section>
+
+        <section>
+          <h2>Mingle! Come up to me! Say Hi! I'm Shy!</h2>
         </section>
         </div>
       </div>
